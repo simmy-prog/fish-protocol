@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FISH Protocol</title>
+<style>
+  :root{
+    --ink:#12211f;
+    --paper:#f5f3ec;
+    --card:#ffffff;
+    --line:#dcd8cc;
+    --accent:#0e6b5c;
+    --accent-soft:#e3efeb;
+    --amber:#b06a12;
+    --muted:#6a7573;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{-webkit-text-size-adjust:100%}
+  body{
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    background:var(--paper);
+    color:var(--ink);
+    line-height:1.5;
+    padding:0 0 64px;
+  }
+  .wrap{max-width:680px;margin:0 auto;padding:0 18px}
+
+  header{
+    background:var(--ink);
+    color:#f5f3ec;
+    padding:34px 18px 30px;
+    position:relative;
+    overflow:hidden;
+  }
+  header .wrap{padding:0 18px}
+  .eyebrow{
+    font-size:12px;letter-spacing:.22em;text-transform:uppercase;
+    color:#8fbdb4;font-weight:600;margin-bottom:10px;
+  }
+  h1{
+    font-size:clamp(30px,8vw,44px);
+    font-weight:800;letter-spacing:-.02em;line-height:1.02;
+  }
+  h1 .full{
+    display:block;font-size:clamp(13px,3.4vw,16px);font-weight:500;
+    letter-spacing:.01em;color:#b9cdc9;margin-top:8px;
+  }
+  .meta{
+    margin-top:18px;display:flex;flex-wrap:wrap;gap:8px;
+  }
+  .chip{
+    font-size:12.5px;font-weight:600;
+    background:rgba(255,255,255,.09);
+    border:1px solid rgba(255,255,255,.14);
+    color:#dcefe9;
+    padding:5px 11px;border-radius:100px;
+  }
+
+  .daynav{
+    position:sticky;top:0;z-index:5;
+    background:var(--paper);
+    border-bottom:1px solid var(--line);
+    display:flex;gap:8px;padding:12px 18px;
+    max-width:680px;margin:0 auto;
+  }
+  .daynav a{
+    flex:1;text-align:center;text-decoration:none;
+    font-weight:700;font-size:14px;
+    padding:11px 8px;border-radius:10px;
+    color:var(--accent);background:var(--accent-soft);
+    border:1px solid transparent;
+  }
+  .daynav a:active{background:var(--accent);color:#fff}
+
+  section{margin-top:30px}
+  .day-head{
+    display:flex;align-items:baseline;gap:12px;
+    padding-bottom:12px;border-bottom:2px solid var(--ink);
+    margin-bottom:6px;
+  }
+  .day-head .num{
+    font-size:12px;letter-spacing:.18em;font-weight:700;
+    text-transform:uppercase;color:var(--accent);
+  }
+  .day-head h2{font-size:24px;font-weight:800;letter-spacing:-.01em}
+
+  .phase{
+    font-size:12.5px;letter-spacing:.12em;text-transform:uppercase;
+    font-weight:700;color:var(--muted);
+    margin:22px 0 4px;
+  }
+
+  ol{list-style:none;counter-reset:step}
+  li.step{
+    counter-increment:step;
+    position:relative;
+    background:var(--card);
+    border:1px solid var(--line);
+    border-radius:12px;
+    padding:14px 16px 14px 52px;
+    margin-top:10px;
+  }
+  li.step::before{
+    content:counter(step);
+    position:absolute;left:12px;top:13px;
+    width:28px;height:28px;border-radius:8px;
+    background:var(--accent-soft);color:var(--accent);
+    font-weight:800;font-size:14px;
+    display:flex;align-items:center;justify-content:center;
+  }
+  li.step p{font-size:15.5px}
+  .tags{margin-top:9px;display:flex;flex-wrap:wrap;gap:6px}
+  .tag{
+    font-size:12.5px;font-weight:700;letter-spacing:.01em;
+    padding:3px 9px;border-radius:6px;white-space:nowrap;
+  }
+  .t-temp{background:#fbeede;color:var(--amber)}
+  .t-time{background:var(--accent-soft);color:var(--accent)}
+  .note{
+    display:block;margin-top:8px;font-size:13.5px;
+    color:var(--muted);font-style:italic;
+  }
+  .caution{
+    background:#fbeede;border-left:3px solid var(--amber);
+    color:#7a4a0c;font-style:normal;font-weight:600;
+    padding:8px 11px;border-radius:0 8px 8px 0;margin-top:9px;
+    font-size:13.5px;
+  }
+
+  footer{
+    margin-top:40px;padding-top:20px;border-top:1px solid var(--line);
+    font-size:12.5px;color:var(--muted);text-align:center;
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <div class="eyebrow">Laboratory Protocol</div>
+    <h1>FISH
+      <span class="full">Fluorescence in situ hybridization &middot; 2-day workflow</span>
+    </h1>
+    <div class="meta">
+      <span class="chip">Day 1 &middot; 15 steps</span>
+      <span class="chip">Day 2 &middot; 8 steps</span>
+    </div>
+  </div>
+</header>
+
+<nav class="daynav">
+  <a href="#day1">Day 1</a>
+  <a href="#day2">Day 2</a>
+</nav>
+
+<div class="wrap">
+
+  <section id="day1">
+    <div class="day-head">
+      <span class="num">Part One</span>
+      <h2>Day 1</h2>
+    </div>
+
+    <div class="phase">Pretreatment</div>
+    <ol>
+      <li class="step"><p>Incubate slides in the oven.</p>
+        <div class="tags"><span class="tag t-time">20 min</span><span class="tag t-temp">70&deg;C</span></div>
+      </li>
+    </ol>
+
+    <div class="phase">Deparaffinization</div>
+    <ol>
+      <li class="step"><p>Incubate in xylene &mdash; 3 changes.</p>
+        <div class="tags"><span class="tag t-time">3 &times; 5 min</span></div>
+      </li>
+      <li class="step"><p>Incubate in 100% ethanol &mdash; 2 changes.</p>
+        <div class="tags"><span class="tag t-time">2 &times; 3 min</span></div>
+      </li>
+      <li class="step"><p>Completely air dry sections.</p></li>
+      <li class="step"><p>Incubate in pre-warmed FISH pretreatment solution PT-1 buffer, 1&times;.</p>
+        <div class="tags"><span class="tag t-time">35 min</span><span class="tag t-temp">98&deg;C</span></div>
+      </li>
+      <li class="step"><p>Wash in 2&times; SSC wash buffer at RT.</p>
+        <div class="tags"><span class="tag t-time">5 min</span></div>
+      </li>
+      <li class="step"><p>Wash in deionized or distilled water at RT &mdash; 2 changes.</p>
+        <div class="tags"><span class="tag t-time">2 &times; 1 min</span></div>
+      </li>
+      <li class="step"><p>Apply pepsin solution dropwise to the specimen and incubate in a humidity chamber.</p>
+        <div class="tags"><span class="tag t-time">10&ndash;30 min</span><span class="tag t-temp">37&deg;C</span></div>
+      </li>
+      <li class="step"><p>Wash in 2&times; SSC wash buffer at RT.</p>
+        <div class="tags"><span class="tag t-time">5 min</span></div>
+      </li>
+      <li class="step"><p>Wash in deionized or distilled water at RT &mdash; 2 changes.</p>
+        <div class="tags"><span class="tag t-time">2 &times; 1 min</span></div>
+      </li>
+      <li class="step"><p>Dehydrate through an ethanol series: 70%, 90%, 100%.</p>
+        <div class="tags"><span class="tag t-time">5 min each</span></div>
+      </li>
+      <li class="step"><p>Completely air dry sections.</p>
+        <div class="tags"><span class="tag t-time">30 min</span></div>
+      </li>
+      <li class="step"><p>Pipette 10 &micro;L of the FISH probe onto each pretreated specimen.</p></li>
+      <li class="step"><p>Cover specimens with a 22 &times; 22 mm coverslip and seal.</p></li>
+      <li class="step"><p>Seal the sides of the coverslip with rubber cement.</p></li>
+      <li class="step"><p>Denature on a hot plate or hybridizer, then hybridize in a humidity chamber.</p>
+        <div class="tags"><span class="tag t-time">Denature 5 min</span><span class="tag t-temp">75&deg;C</span><span class="tag t-time">Hybridize 16 hr</span><span class="tag t-temp">37&deg;C</span></div>
+      </li>
+    </ol>
+  </section>
+
+  <section id="day2">
+    <div class="day-head">
+      <span class="num">Part Two</span>
+      <h2>Day 2</h2>
+    </div>
+    <ol>
+      <li class="step"><p>Soak slide in 2&times; SSC at RT to loosen the coverslip.</p>
+        <div class="caution">Do not pull off the coverslip &mdash; let it float free.</div>
+      </li>
+      <li class="step"><p>Wash in 2&times; SSC + 50 &micro;L IGEPAL.</p>
+        <div class="tags"><span class="tag t-time">2 min</span></div>
+      </li>
+      <li class="step"><p>Wash in 2&times; SSC + 150 &micro;L IGEPAL.</p>
+        <div class="tags"><span class="tag t-time">2 min</span><span class="tag t-temp">72&deg;C</span></div>
+      </li>
+      <li class="step"><p>Wash with MilliQ water.</p>
+        <div class="tags"><span class="tag t-time">2 min</span></div>
+      </li>
+      <li class="step"><p>Dehydrate through an alcohol series: 70%, 90%, 100%.</p>
+        <div class="tags"><span class="tag t-time">1 min each</span></div>
+      </li>
+      <li class="step"><p>Air dry.</p></li>
+      <li class="step"><p>Mount using DAPI with antifade reagent, then seal the sides with clear nail (gel) polish.</p></li>
+      <li class="step"><p>Visualize using a fluorescence microscope.</p></li>
+    </ol>
+  </section>
+
+  <footer>
+    FISH protocol &middot; for laboratory reference
+  </footer>
+
+</div>
+</body>
+</html>
